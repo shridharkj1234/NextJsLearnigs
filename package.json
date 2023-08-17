@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watch"
+    "test": "jest --coverage --forceExit"
   },
   "dependencies": {
     "next": "13.4.7",
