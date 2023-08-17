@@ -15,7 +15,10 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'deploy'
+                script{
+                    withDockerRegistry(credentialsId: 'cf8c2925-311e-4021-a59c-0df3eda6bd64') {
+                        sh "docker build"
+                }
             }
         }
     }
