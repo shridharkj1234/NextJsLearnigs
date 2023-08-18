@@ -24,5 +24,14 @@ pipeline {
                 }
             }
         }
+        stage('Publish') {
+            steps {
+                script{
+                    withDockerRegistry(credentialsId: 'cf8c2925-311e-4021-a59c-0df3eda6bd64') {
+                        sh "docker run -d --name shop-shop -p 8070:8070 shridharkj1234/nextjslearnings:latest"
+                    }
+                }
+            }
+        }
     }
 }
