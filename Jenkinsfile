@@ -20,6 +20,7 @@ pipeline {
                         sh "docker build -t NextJsLearnings -f /Dockerfile ."
                         sh "docker tag NextJsLearnings shridharkj1234/NextJsLearnings:latest"
                         sh "docker push shridharkj1234/NextJsLearnings:latest"
+                    }
                 }
             }
         }
