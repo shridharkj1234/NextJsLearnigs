@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script{
                     withDockerRegistry(credentialsId: 'cf8c2925-311e-4021-a59c-0df3eda6bd64') {
-                        sh "docker build -t NextJsLearnings -f /Dockerfile ."
+                        sh "docker build -t NextJsLearnings -f ."
                         sh "docker tag NextJsLearnings shridharkj1234/NextJsLearnings:latest"
                         sh "docker push shridharkj1234/NextJsLearnings:latest"
                     }
