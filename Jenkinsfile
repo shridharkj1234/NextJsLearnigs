@@ -1,5 +1,8 @@
 pipeline { 
     agent any 
+    environment{
+        SCANNER_HOME= tool 'sonar-scanner'
+    }
     stages {
         stage('Build') { 
             steps {
@@ -11,6 +14,15 @@ pipeline {
             steps {
                 sh "npm run test"
                 echo 'Test Passed'
+            }
+        }
+        stage('Sonarqube') {
+            steps {
+                withSonarQubeEnv('sonarqube-secret'){
+                   sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=NextJsLearnigs \
+                   -Dsonar.java.binaries=. \
+                   -Dsonar.projectKey=NextJsLearnigs '''
+               }
             }
         }
         stage('Deploy') {
