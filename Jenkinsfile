@@ -22,10 +22,9 @@ pipeline {
             -Dsonar.sources=. \
             -Dsonar.login=sqp_5feede43f58bd87f4682f56fa139bf541aa46403 \
             -Dsonar.host.url=http://127.0.0.1:9000"
-}
+                }
             }
-        }
-        
+        }
         stage('Deploy') {
             steps {
                 script{
