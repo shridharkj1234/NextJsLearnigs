@@ -14,15 +14,17 @@ pipeline {
             }
         }
 
-        stage('SonarQubeAnalysis') {
-            steps {
-                    withSonarQubeEnv('sonar-2') {
-                         sh '/home/shree/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner \
+        stage('SonarQubeAnalysis'){
+            steps{
+                   script{
+                    withSonarQubeEnv('sonar-2') {
+                         sh "/home/shree/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner \
                         -Dsonar.projectKey=jenkins-assignment \
                         -Dsonar.sources=. \
                         -Dsonar.login=sqp_6ddd86fe07bc5aeb29945d2be6bb083b9f6ec2c3 \
-                        -Dsonar.host.url=http://127.0.0.1:9099'
-                    }
+                        -Dsonar.host.url=http://127.0.0.1:9099"
+                    }           
+                }
               }
         }
         
